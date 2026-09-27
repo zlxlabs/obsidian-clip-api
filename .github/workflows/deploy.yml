@@ -19,8 +19,8 @@ jobs:
     uses: zlxlabs/ci-templates/.github/workflows/build-deploy.yml@v2
     with:
       image_name: obsidian-clip-api                      # == ACR 镜像名 == 宿主 compose 的 image
-      host: 100.68.21.80                                 # n305 的 Tailscale IP(runner 入 tailnet 后可达)
-      ssh_user: zlx
+      host: ${{ vars.DEPLOY_HOST }}
+      ssh_user: ${{ vars.DEPLOY_USER }}
       deploy_dir: /opt/notes/obsidian_clip_api
       healthcheck_url: http://localhost:8901/            # 宿主发布端口 8901(容器内同 8901);/ 为纯存活探针,不查下游
       ci_templates_ref: v2
